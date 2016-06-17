@@ -1,19 +1,18 @@
 #pragma once
 
-//タスククラス。何かのモジュールはすべてこのTaskクラスを継承する。
 class Task {
-public:
+public : 
     virtual ~Task(){}
 
-	//初期化処理は実装してもしなくてもいい
+	//初期化
     virtual void Initialize(){}
 
-	//終了処理は実装してもしなくてもいい
+	//終了
     virtual void Finalize(){}
 
-	//更新処理は必ず継承先で実装する
+	//更新
     virtual void Update() = 0;
 
-	//描画処理は必ず継承先で実装する
+	//描画
     virtual void Draw() = 0;
 };

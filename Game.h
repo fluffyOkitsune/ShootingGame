@@ -1,39 +1,47 @@
+// Game
 #pragma once
 
 #include "BaseScene.h"
 #include "ISceneChanger.h"
 #include "Player.h"
+#include "ObjectMng.h"
 
-#define NUM_BULLET_OBJ	20
+enum State {
+	PRE_INTRO, INTRO, GAME, DIALOG, CLEAR, DIED, GAMEOVER
+};
 
-//ゲーム画面クラス
+// ゲーム画面クラス
 class Game : public BaseScene {
-public :
-	// 自機
-	Player p;
+public : 
+	Player player;	// 自機
+	ObjectMng om;	// 敵と敵弾
 
-	// 弾丸
-	Bullet bullet[NUM_BULLET_OBJ];
+	State state;	// 状態
 
-	// 弾丸ID
-	int bulletID;
+	long time;		// 時間
+	int stageID;	// 現在のステージ番号
+	int score;		// スコア
+	int highScore;	// ハイスコア
 
-	// コンストラクタ
-    Game::Game(ISceneChanger* changer);
+	Game::Game(ISceneChanger* changer);
 
-	//初期化処理をオーバーライド。
-    void Initialize() override;
+	// 初期化
+	void Initialize() override;
 
-	//終了処理をオーバーライド。
-    //void Finalize() override;
+	// 更新
+	void Update() override;
 
-	//更新処理をオーバーライド。
-    void Update() override;
+	// 描画
+	void Draw() override;
 
-	//描画処理をオーバーライド。
-    void Draw() override;
-	
-	// 射撃
-	void Shoot();
+	// 被弾確認
+	bool IsHit();
+	bool GetHit();
+
+	// ステージ情報
+	void Stage(int ID, int time);
+
+	// ボス登場
+	void Boss(int ID);
 
 };

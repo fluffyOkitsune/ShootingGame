@@ -7,7 +7,7 @@ Config::Config(ISceneChanger* changer) : BaseScene(changer) {
 //初期化
 void Config::Initialize(){
 	//画像のロード
-	mImageHandle = LoadGraph("images/Scene_Config.png");
+	mImageHandle = LoadGraph("images/Usagi.png");
 }
 
 //更新

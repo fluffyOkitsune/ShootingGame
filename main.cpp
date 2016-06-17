@@ -1,6 +1,5 @@
-#include "DxLib.h"
 #include "SceneMgr.h"
-
+#include "DxLib.h"
 
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR,int){
 	// ウィンドウモード変更と初期化と裏画面設定
